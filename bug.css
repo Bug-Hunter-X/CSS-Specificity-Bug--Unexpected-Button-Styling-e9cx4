@@ -1,0 +1,21 @@
+The following CSS code snippet intends to style a button, but produces unexpected behavior due to specificity issues:
+
+```css
+button {
+  background-color: blue;
+}
+
+.special-button {
+  background-color: red;
+}
+
+#my-button {
+  background-color: green;
+}
+
+<button id="my-button" class="special-button">Click me</button>
+```
+
+The expected behavior is that the button should be green, due to the `#my-button` ID selector's higher specificity.  However, depending on the CSS processing order and browser, the button may end up red (from the class selector) or even blue (from the universal selector). This is because CSS specificity rules dictate the order of precedence which can lead to unexpected results when multiple selectors are equally specific. 
+
+The problem stems from an understanding of the cascading nature of CSS and how specificity is handled by the browser. 
